@@ -1,2 +1,0 @@
-机场,机场,"http://api.map.baidu.com/direction/v2/transit?output=json&origin=22.629272,113.820643&destination=22.629272,113.820643&ak=YwjKptDEqMrzW0YpHWvy3yvVMGhyQqpi&coord_type=bd09ll&page_size=1&tactics_incity=4"
-机场,机场,"http://api.map.baidu.com/direction/v2/transit?output=json&origin=22.629272,113.820643&destination=22.629272,113.820643&ak=YwjKptDEqMrzW0YpHWvy3yvVMGhyQqpi&coord_type=bd09ll&page_size=1&tactics_incity=4"
