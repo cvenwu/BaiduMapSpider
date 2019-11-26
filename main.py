@@ -3,6 +3,7 @@ import json
 import requests
 import csv
 import concurrent
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Global Parameters
@@ -122,6 +123,11 @@ def spider():
 
 
 def url_supplement_origin_dest_position():
+    '''
+    存储每个url到url_list
+    存储每个站点的起点站名以及对应的终点站名到station_list
+    :return:
+    '''
     global station_information
     global url_list
     global station_list
@@ -171,6 +177,10 @@ def spider(website_url, origin_key, dest_key, origin_value, dest_value):
 
 
 def initialize():
+    '''
+    初始化全局参数和站点信息列表
+    :return: None
+    '''
     global config
     global station_information
     global url_list
@@ -181,8 +191,9 @@ def initialize():
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     initialize()
-    executor = ThreadPoolExecutor(max_workers=6)
+    executor = ThreadPoolExecutor(max_workers=10)
     all_task = []
     for index, url in enumerate(url_list):
         origin_key, dest_key = station_list[index][0].split(',')
@@ -194,3 +205,5 @@ if __name__ == '__main__':
     for future in as_completed(all_task):
         data = future.result()
         print(data)
+    end_time = time.time()
+    print('共用时:{}s'.format(end_time - start_time))  # 爬取10个起点站和终点站：共用时:2.550790786743164s
