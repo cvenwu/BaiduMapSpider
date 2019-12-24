@@ -24,6 +24,7 @@
 ### v1_1: 添加newline='' 防止在爬取数据为None是出现空行的情况
 
 ```python
+# 参考：https://www.cnblogs.com/meitian/p/4625011.html
 with open('results.csv', 'a+', newline='') as f:
 with open('null.txt', 'a+', newline='') as f:
 ```
