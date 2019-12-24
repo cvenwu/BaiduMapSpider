@@ -164,14 +164,16 @@ def spider(website_url, origin_key, dest_key, origin_value, dest_value):
             distance = website_url_content_dict['result']['routes'][0]['distance']
             # 得到持续时间
             duration = website_url_content_dict['result']['routes'][0]['duration']
-            with open('results.csv', 'a+') as f:
+            # 添加newline='' 防止在爬取数据为None是出现空行的情况
+            with open('results.csv', 'a+', newline='') as f:
                 writer = csv.writer(f)
                 writer.writerow([origin_value[0], origin_key, dest_value[0], dest_key, str(distance), str(duration)])
             return (origin_value[0], origin_key, dest_value[0], dest_key, str(distance), str(duration))
         else:
             # 网页有返回，但是返回的result下的routes为空
             ## 例如：http://api.map.baidu.com/direction/v2/transit?output=json&origin=22.629272,113.820643&destination=22.629272,113.820643&ak=YwjKptDEqMrzW0YpHWvy3yvVMGhyQqpi&coord_type=bd09ll&page_size=1&tactics_incity=4
-            with open('null.txt', 'a+') as f:
+            ### 添加newline='' 防止在爬取数据为None是出现空行的情况
+            with open('null.txt', 'a+', newline='') as f:
                 writer = csv.writer(f)
                 writer.writerow([origin_key, dest_key, website_url])
 
